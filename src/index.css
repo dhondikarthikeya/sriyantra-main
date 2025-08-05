@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-poppins;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px; /* Adjust to navbar height */
+}
+/* Smooth hover animation for pricing cards */
+.pricing-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Popular badge animation */
+.popular-badge {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Smooth transition for switch toggle */
+.pricing-switch {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pricing-switch:active {
+  transform: scale(0.95);
+}
