@@ -10,7 +10,6 @@ import Pricing from "./components/ui/pricing";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ServiceDetails from "./components/ServiceDetails";
-// import ViewPlans from "./components/ViewPlans";
 
 function App() {
   const location = useLocation();
@@ -29,11 +28,9 @@ function App() {
   const hideFooterRoutes = [
     "/services-details",
     "/about-details",
-    // "/view-plans",
   ];
   const shouldShowFooter = !hideFooterRoutes.includes(location.pathname);
 
-  // When splash is visible, show only splash + HeroMerged, no footer
   if (location.pathname === "/" && showSplash) {
     return (
       <>
@@ -46,7 +43,6 @@ function App() {
     );
   }
 
-  // After splash, render full home page sections with footer
   if (location.pathname === "/") {
     return (
       <>
@@ -75,14 +71,12 @@ function App() {
     );
   }
 
-  // Other routes render normally with footer logic
   return (
     <>
       <main key={location.pathname}>
         <Routes location={location} key={location.pathname}>
           <Route path="/services-details" element={<ServiceDetails />} />
           <Route path="/about-details" element={<AboutDetails />} />
-          {/* <Route path="/view-plans" element={<ViewPlans />} /> */}
         </Routes>
       </main>
       {shouldShowFooter && <Footer />}
