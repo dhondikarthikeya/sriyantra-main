@@ -1,13 +1,16 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  Globe, Palette, Rocket, Smartphone, 
+import {
+  Globe, Palette, Rocket,
   ShoppingCart, Database, Wrench, Server, Layers
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function Services() {
+  const navigate = useNavigate();
+
   const services = [
     {
       title: "Web Design & Development",
@@ -59,9 +62,17 @@ export default function Services() {
     },
   ];
 
+  // Navigate & reset scroll instantly
+  const handleKnowMoreClick = () => {
+    navigate("/services-details");
+    // Reset scroll position right after navigation
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }, 0);
+  };
+
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 via-white to-gray-50" id="services">
-      {/* Section Header */}
       <div className="text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 inline-block relative">
           Our Services
@@ -72,7 +83,6 @@ export default function Services() {
         </p>
       </div>
 
-      {/* Services Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto px-4 items-stretch">
         {services.map((service, index) => {
           const Icon = service.icon;
@@ -85,29 +95,18 @@ export default function Services() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="h-full"
             >
-              <Card
-                className="group relative h-full rounded-2xl border border-white/30 
+              <Card className="group relative h-full rounded-2xl border border-white/30 
                   bg-white/30 backdrop-blur-md shadow-lg hover:shadow-2xl 
-                  transition-all duration-500 hover:scale-[1.03]"
-              >
+                  transition-all duration-500 hover:scale-[1.03]">
                 <CardContent className="flex flex-col items-center justify-center text-center p-8 h-full">
-                  {/* Icon Badge */}
-                  <div className={`p-4 rounded-full mb-4 transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110 ${service.color}`}>
+                  <div
+                    className={`p-4 rounded-full mb-4 transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110 ${service.color}`}
+                  >
                     <Icon className="h-8 w-8" />
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-gray-500 text-sm mb-4">
-                    {service.desc}
-                  </p>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h3>
+                  <p className="text-gray-500 text-sm mb-4">{service.desc}</p>
                 </CardContent>
-
-                {/* Subtle border animation */}
                 <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-blue-200/60 transition-all duration-500 pointer-events-none"></div>
               </Card>
             </motion.div>
@@ -115,14 +114,21 @@ export default function Services() {
         })}
       </div>
 
-      {/* Call-to-Action */}
       <div className="text-center mt-12">
-        <a
-          href="#contact"
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-xl hover:bg-blue-700 transition-all duration-300"
-        >
-          Need something custom? Contact us!
-        </a>
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a
+            href="#contact"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-xl hover:bg-blue-700 transition-all duration-300"
+          >
+            Need something custom? Contact us!
+          </a>
+          <button
+            onClick={handleKnowMoreClick}
+            className="inline-block border border-blue-600 text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300"
+          >
+            Know more
+          </button>
+        </div>
       </div>
     </section>
   );

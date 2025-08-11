@@ -65,7 +65,7 @@ export default function HeroWithNavbar() {
           animate="visible"
           className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-8"
         >
-          BlueFlights helps small & medium businesses go online with stunning,
+          Sri Yantra Tech helps small & medium businesses go online with stunning,
           responsive websites starting at just ₹4,999.
         </motion.p>
 

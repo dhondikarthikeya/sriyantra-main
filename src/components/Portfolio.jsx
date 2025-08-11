@@ -1,77 +1,136 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function Portfolio() {
-  const projects = [
-    {
-      title: "Bakery Website",
-      desc: "Modern, responsive website for a local bakery.",
-      img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200",
-    },
-    {
-      title: "Fitness Studio",
-      desc: "Landing page and class schedule system.",
-      img: "https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=1200",
-    },
-    {
-      title: "Startup Landing Page",
-      desc: "Professional SaaS landing page for a tech startup.",
-      img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200",
-    },
-  ];
+const projects = [
+  {
+    title: "Corporate Website for Tech Startup",
+    description:
+      "Designed and developed a modern, responsive website for a fast-growing tech startup, featuring smooth animations and lead capture forms.",
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&auto=format&fit=crop&q=80",
+    category: "Web Development",
+  },
+  {
+    title: "E-Commerce Platform",
+    description:
+      "Built a robust online store with secure checkout, product filters, and mobile-first design to maximize conversions.",
+    image:
+      "https://images.unsplash.com/photo-1557821552-17105176677c?w=1200&auto=format&fit=crop&q=80",
+    category: "E-Commerce",
+  },
+  {
+    title: "Travel Booking Web App",
+    description:
+      "Developed a feature-rich travel booking system with real-time search, user accounts, and payment integration.",
+    image:
+      "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1200&auto=format&fit=crop&q=80",
+    category: "Web Application",
+  },
+  {
+    title: "Personal Brand Portfolio",
+    description:
+      "Created a sleek and interactive portfolio for a creative professional, including blog, gallery, and contact form.",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&auto=format&fit=crop&q=80",
+    category: "Design & Development",
+  },
+  {
+    title: "Restaurant Ordering Website",
+    description:
+      "Built a responsive online ordering system for a restaurant, complete with menu management and delivery tracking.",
+    image:
+      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1200&auto=format&fit=crop&q=80",
+    category: "Web App",
+  },
+  {
+    title: "Real Estate Listing Platform",
+    description:
+      "Developed a property listing site with map integration, advanced search filters, and agent dashboards.",
+    image:
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&auto=format&fit=crop&q=80",
+    category: "Web Platform",
+  },
+];
+
+export default function PortfolioSection() {
+  const [filter, setFilter] = useState("All");
+
+  const categories = ["All", ...new Set(projects.map((p) => p.category))];
+  const filteredProjects =
+    filter === "All"
+      ? projects
+      : projects.filter((p) => p.category === filter);
 
   return (
-    <section
-      id="portfolio"
-      className="py-24 bg-gray-50 scroll-mt-24" // ✅ scroll-mt avoids navbar overlap
-    >
-      {/* Header */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 inline-block relative">
+    <section id="portfolio" className="py-16 bg-gray-50">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section Header */}
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-bold text-center text-gray-800 mb-4"
+        >
           Our Portfolio
-          <span className="block w-16 h-1 bg-blue-500 rounded-full mx-auto mt-2"></span>
-        </h2>
-        <p className="max-w-3xl mx-auto text-gray-500 mt-4">
-          Here are some of the recent websites we designed for small and medium
-          businesses.
-        </p>
-      </div>
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-center text-gray-600 max-w-2xl mx-auto mb-12"
+        >
+          A selection of our recent work — combining creativity, technology, and business impact.
+        </motion.p>
 
-      {/* Portfolio Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
-        {projects.map((project, idx) => (
-          <motion.div
-            key={idx}
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 200, damping: 12 }}
-          >
-            <Card className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl bg-white">
-              {/* Thumbnail */}
-              <div className="relative w-full h-52 overflow-hidden">
+        {/* Responsive Category Filter */}
+        <div className="mb-10 overflow-x-auto">
+          <div className="flex gap-3 min-w-max px-2 pb-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`px-5 py-2 rounded-full text-sm font-medium border transition-colors duration-300 whitespace-nowrap ${
+                  filter === cat
+                    ? "bg-indigo-600 text-white border-indigo-600"
+                    : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Portfolio Grid */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
+            >
+              <div className="overflow-hidden">
                 <img
-                  src={project.img}
+                  src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
+                  className="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                  <button className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700">
-                    View Project
-                  </button>
-                </div>
               </div>
-
-              {/* Card Content */}
-              <CardContent className="p-5 text-left">
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+              <div className="p-6">
+                <span className="text-sm text-indigo-600 font-medium">
+                  {project.category}
+                </span>
+                <h3 className="mt-2 text-xl font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{project.desc}</p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+                <p className="mt-2 text-gray-600 text-sm">{project.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

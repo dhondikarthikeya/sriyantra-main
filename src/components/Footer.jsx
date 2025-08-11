@@ -60,7 +60,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
           {/* Brand Column */}
           <div>
-            <h3 className="text-3xl font-bold">BlueFlights</h3>
+            <h3 className="text-3xl font-bold">Sri Yantra Tech</h3>
             <p className="text-gray-200 mt-2 text-sm md:text-base max-w-xs mx-auto md:mx-0">
               Affordable websites for small & medium businesses.
             </p>
@@ -118,7 +118,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 text-center text-gray-300 text-xs">
-          © {new Date().getFullYear()} BlueFlights. All rights reserved.
+          © {new Date().getFullYear()} Sri Yantra Tech . All rights reserved.
         </div>
 
         {/* Scroll-to-top Button */}

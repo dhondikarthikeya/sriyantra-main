@@ -4,12 +4,8 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
 import NumberFlow from "@number-flow/react";
-import { Check, Star } from "lucide-react";
-
+import { Check, Sparkles, Star } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 
 export interface PricingPlan {
@@ -25,162 +21,231 @@ export interface PricingPlan {
 }
 
 interface PricingProps {
-  plans: PricingPlan[];
   title?: string;
   description?: string;
 }
 
+const plans: PricingPlan[] = [
+  {
+    name: "Starter Plan",
+    price: "5499",
+    yearlyPrice: "5499",
+    period: "One-Time",
+    features: [
+      "1 Page Static Website",
+      "Mobile-Responsive Design",
+      "Free Hosting for 1 Year",
+      "Delivery in 3 Days",
+      "Lifetime SSL Certificate",
+      "Basic SEO Setup",
+    ],
+    description:
+      "Best For: Individuals, freelancers, or small local businesses getting started online.",
+    buttonText: "Get Started",
+    href: "/#contact",
+  },
+  {
+    name: "🚀 Business Plan",
+    price: "10499",
+    yearlyPrice: "10499",
+    period: "One-Time",
+    features: [
+      "Up to 5 Pages (Home, About, Services, Contact, etc.)",
+      "Custom UI/UX Design",
+      "Social Media Integration",
+      "SEO-Ready Pages (Basic)",
+      "Admin Panel (to manage content)",
+      "Google Business Profile Setup",
+      "Analytics Integration (Google Analytics)",
+      "Delivery in 5–7 Days",
+      "Support for 1 Month",
+    ],
+    description:
+      "Best For: Small & Medium Businesses needing a strong digital presence.",
+    buttonText: "Start Now",
+    href: "/#contact",
+    isPopular: true,
+  },
+  {
+    name: "🔥 Pro Plan",
+    price: "20999",
+    yearlyPrice: "20999",
+    period: "Starting At",
+    features: [
+      "Unlimited Pages",
+      "Blog, Portfolio, Testimonials Sections",
+      "Payment Gateway Integration (Razorpay/Stripe)",
+      "Full SEO Setup with Keywords",
+      "Speed & Performance Optimized",
+      "Ongoing Support (up to 3 Months)",
+      "Google Analytics + Search Console Setup",
+      "Backup & Maintenance Plan",
+    ],
+    description:
+      "Best For: Businesses wanting dynamic features, automation & growth tools.",
+    buttonText: "Get Custom Quote",
+    href: "/#contact",
+  },
+];
+
 export default function Pricing({
-  plans,
   title = "Simple, Transparent Pricing",
   description = "Choose the plan that works for you\nAll plans include access to our platform and dedicated support.",
 }: PricingProps) {
   const [isMonthly, setIsMonthly] = useState(true);
   const switchRef = useRef<HTMLButtonElement>(null);
 
-  
+  const handleToggle = (checked: boolean) => {
+    setIsMonthly(!checked);
+    if (checked && switchRef.current) {
+      const rect = switchRef.current.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
 
-const handleToggle = (checked: boolean) => {
-  // checked = true => Annual
-  setIsMonthly(!checked);
-
-  if (checked && switchRef.current) {
-    const rect = switchRef.current.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-
-    confetti({
-      particleCount: 50,
-      spread: 60,
-      origin: { x: x / window.innerWidth, y: y / window.innerHeight },
-      colors: [
-        "hsl(var(--primary))",
-        "hsl(var(--accent))",
-        "hsl(var(--secondary))",
-        "hsl(var(--muted))",
-      ],
-      ticks: 200,
-      gravity: 1.2,
-      decay: 0.94,
-      startVelocity: 30,
-      shapes: ["circle"],
-    });
-  }
-};
-
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { x: x / window.innerWidth, y: y / window.innerHeight },
+        colors: [
+          "hsl(var(--primary))",
+          "hsl(var(--accent))",
+          "hsl(var(--secondary))",
+          "hsl(var(--muted))",
+        ],
+        ticks: 200,
+        gravity: 1.2,
+        decay: 0.94,
+        startVelocity: 30,
+        shapes: ["circle"],
+      });
+    }
+  };
 
   return (
-    <div className="container py-20">
-    {/* Section Header */}
-<div className="text-center mb-12">
-  <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 inline-block relative">
-    {title}
-    <span className="block w-16 h-1 bg-blue-500 rounded-full mx-auto mt-2"></span>
-  </h2>
-  <p className="max-w-2xl mx-auto text-gray-500 mt-4 whitespace-pre-line">
-    {description}
-  </p>
-</div>
+    <motion.div
+      className="container" // padding removed here
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <div className="text-center mb-16">
+        <motion.h2
+          className="text-3xl sm:text-4xl font-extrabold text-gray-900 inline-block relative tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          {title}
+          <span className="block w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mx-auto mt-2"></span>
+        </motion.h2>
+        <motion.p
+          className="max-w-2xl mx-auto text-gray-500 mt-4 text-base whitespace-pre-line"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {description}
+        </motion.p>
+      </div>
 
-
-      {/* Billing Toggle */}
-    <div className="flex justify-center mb-10 items-center space-x-3">
-  <Switch
-    ref={switchRef as any}
-    checked={!isMonthly}  // ON = Annual
-    onCheckedChange={(checked) => handleToggle(checked)}
-  />
-  <span className="font-semibold">
-    Annual billing <span className="text-primary">(Save 20%)</span>
-  </span>
-</div>
-
-
-
-      {/* Pricing Cards */}
- 
-
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Increased mobile gap */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-14 lg:gap-16 justify-center items-start">
         {plans.map((plan, index) => (
-         <motion.div
-  key={index}
-  initial={{ y: 50, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ duration: 0.8, delay: index * 0.2 }}
-  className={cn(
-    "relative flex flex-col p-8 rounded-2xl border backdrop-blur-sm transition-all duration-300",
-    "bg-gradient-to-br from-background/90 to-background/70 hover:from-background hover:to-background",
-    plan.isPopular
-      ? "border-primary shadow-[0_0_30px_rgba(37,99,235,0.2)] scale-[1.02]"
-      : "border-border hover:shadow-lg hover:scale-[1.01]"
-  )}
->
-  {/* Popular Badge */}
-  {plan.isPopular && (
-    <div className="absolute top-0 right-0 bg-primary py-1 px-3 rounded-bl-xl rounded-tr-xl flex items-center animate-pulse shadow-md">
-      <Star className="text-primary-foreground h-4 w-4 fill-current" />
-      <span className="text-primary-foreground ml-1 font-semibold text-sm">Popular</span>
-    </div>
-  )}
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: plan.isPopular ? -30 : 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: index * 0.2 }}
+            className={cn(
+              "relative flex flex-col p-8 rounded-3xl border backdrop-blur-xl transition-all duration-300 mb-8 sm:mb-0",
+              "bg-white/80 shadow-md hover:shadow-2xl hover:scale-[1.015]",
+              plan.isPopular
+                ? "border-primary shadow-2xl scale-[1.05] z-10"
+                : "border-border"
+            )}
+          >
+            {plan.isPopular && (
+              <div className="absolute top-0 right-0 bg-black py-1 px-3 rounded-bl-xl rounded-tr-xl flex items-center shadow-lg">
+                <Star className="text-white h-4 w-4 fill-current" />
+                <span className="text-white ml-1 font-semibold text-sm">
+                  Popular
+                </span>
+              </div>
+            )}
 
-  {/* Plan Title */}
-  <p className="text-lg font-semibold text-primary">{plan.name}</p>
+            <div className="text-center mb-2">
+              <p className="text-xl font-bold text-primary tracking-wide uppercase inline-flex items-center justify-center gap-2">
+                {plan.name === "Starter Plan" && (
+                  <Sparkles className="w-5 h-5 text-primary" />
+                )}
+                {plan.name}
+              </p>
+            </div>
 
-  {/* Price */}
-  <div className="mt-6 flex items-center justify-center gap-x-2">
-    <span className="text-5xl font-extrabold tracking-tight text-foreground">
-      <NumberFlow
-        value={isMonthly ? Number(plan.price) : Number(plan.yearlyPrice)}
-        format={{
-          style: "currency",
-          currency: "USD",
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 0,
-        }}
-        formatter={(value) => `$${value}`}
-        transformTiming={{ duration: 500, easing: "ease-out" }}
-        willChange
-        className="tabular-nums drop-shadow-sm"
-      />
-    </span>
-    <span className="text-sm font-semibold text-muted-foreground">/ {plan.period}</span>
-  </div>
-  <p className="text-xs leading-5 text-muted-foreground">
-    {isMonthly ? "billed monthly" : "billed annually"}
-  </p>
+            <div className="mt-4 flex items-center justify-center gap-x-2">
+              <span className="text-5xl font-extrabold tracking-tight text-foreground drop-shadow-md">
+                <NumberFlow
+                  value={Number(plan.price)}
+                  format={{
+                    style: "currency",
+                    currency: "INR",
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  }}
+                  formatter={(value) => `₹${value}`}
+                  transformTiming={{ duration: 500, easing: "ease-out" }}
+                  willChange
+                  className="tabular-nums"
+                />
+              </span>
+              <span className="text-sm font-medium text-muted-foreground">
+                / {plan.period}
+              </span>
+            </div>
+            <p className="text-xs text-muted-foreground text-center">
+              {plan.period === "One-Time" ? "one-time payment" : "starting rate"}
+            </p>
 
-  {/* Features */}
-  <ul className="mt-6 gap-3 flex flex-col text-sm text-muted-foreground">
-    {plan.features.map((feature, idx) => (
-      <li
-        key={idx}
-        className="flex items-center gap-3 group hover:text-foreground transition-colors"
-      >
-        <div className="h-6 w-6 flex items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition">
-          <Check className="h-4 w-4 text-primary" />
-        </div>
-        <span className="text-left">{feature}</span>
-      </li>
-    ))}
-  </ul>
+            <ul className="mt-6 gap-3 flex flex-col text-sm text-muted-foreground">
+              {plan.features.map((feature, idx) => (
+                <li
+                  key={idx}
+                  className="flex items-start gap-3 group hover:text-foreground transition-colors"
+                >
+                  <div className="h-6 w-6 flex items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition mt-1">
+                    <Check className="h-4 w-4 text-primary" />
+                  </div>
+                  <span className="text-left leading-relaxed">{feature}</span>
+                </li>
+              ))}
+            </ul>
 
-  {/* Button */}
-  <a
-    href={plan.href}
-    className={cn(
-      buttonVariants({ variant: plan.isPopular ? "default" : "outline" }),
-      "w-full text-lg font-semibold py-3 mt-6 transition-all hover:scale-[1.02] shadow-sm"
-    )}
-  >
-    {plan.buttonText}
-  </a>
+            <a
+              href={plan.href}
+              style={{
+                color: "rgb(37 99 235 / var(--tw-text-opacity, 1))",
+                borderColor: "rgb(37 99 235 / var(--tw-text-opacity, 1))",
+              }}
+              className={cn(
+                buttonVariants({
+                  variant: plan.isPopular ? "default" : "outline",
+                }),
+                "w-full text-lg font-semibold py-3 mt-6 transition-all hover:scale-[1.03] shadow-md"
+              )}
+            >
+              {plan.buttonText}
+            </a>
 
-  {/* Description */}
-  <p className="mt-6 text-xs leading-5 text-muted-foreground">{plan.description}</p>
-</motion.div>
-
+            <p className="mt-6 text-xs leading-5 text-muted-foreground text-center italic">
+              {plan.description}
+            </p>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -52,7 +52,10 @@ export const AnimatedTestimonials = ({
   const randomRotateY = () => Math.floor(Math.random() * 21) - 10;
 
   return (
-    <section id="clients" className={`max-w-sm md:max-w-6xl mx-auto px-4 md:px-8 lg:px-12 py-20 ${className}`}>
+    <section
+      id="clients"
+      className={`max-w-sm md:max-w-6xl mx-auto px-4 md:px-8 lg:px-12 pt-0 pb-20 mt-0 ${className}`}
+    >
       {/* Section Header */}
       <div className="text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 inline-block relative">

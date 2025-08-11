@@ -128,7 +128,7 @@ function HeroGeometric({
           animate="visible"
           className="text-sm sm:text-base md:text-lg text-white/60 max-w-md sm:max-w-xl md:max-w-2xl mx-auto leading-relaxed font-normal"
         >
-          BlueFlights helps small & medium businesses go online with stunning,
+          Sri Yantra Tech helps small & medium businesses go online with stunning,
           responsive websites starting at just ₹4,999.
         </motion.p>
       </div>

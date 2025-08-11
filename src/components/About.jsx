@@ -9,9 +9,12 @@ import {
   CheckCircle,
   ShieldCheck,
   Globe,
+  Phone,
+  XCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom"; // import useNavigate
 
 const features = [
   {
@@ -47,7 +50,6 @@ const features = [
 ];
 
 export default function About() {
-  // Animation variants
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: (i) => ({
@@ -57,29 +59,63 @@ export default function About() {
     }),
   };
 
-  // Intersection Observer hook to trigger animation on scroll
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
+  const navigate = useNavigate();
+
+  // Handler for "No More" button click
+  const handleNoMoreClick = () => {
+    navigate("/about-details");
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }, 0);
+  };
+
   return (
     <section className="w-full bg-gray-50 py-24 px-4 sm:px-6 lg:px-12">
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-20 px-4">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight sm:leading-snug md:leading-snug mb-6 max-w-3xl mx-auto">
+        <motion.h1
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight sm:leading-snug md:leading-snug mb-6 max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           Empowering{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700">
             Small & Medium
           </span>{" "}
           Businesses to Go Online
-        </h1>
+        </motion.h1>
+
         <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-snug max-w-3xl mx-auto mt-2 px-4">
-          At <span className="font-semibold text-indigo-600">BlueFlights</span>, 
-          we help businesses establish a professional online presence quickly and 
-          affordably. Our goal is to make digital transformation accessible to 
+          At{" "}
+          <span className="font-semibold text-blue-600">Sri Yantra Tech</span>, we
+          help businesses establish a professional online presence quickly and
+          affordably. Our goal is to make digital transformation accessible to
           everyone — from small startups to growing enterprises.
         </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap justify-center gap-2 mt-6">
+          {[
+            "Startups 🚀",
+            "Retail Stores 🏪",
+            "Freelancers 🧑‍💻",
+            "Local Services 📍",
+          ].map((tag, i) => (
+            <span
+              key={i}
+              className="bg-blue-100 text-blue-700 text-sm font-medium px-4 py-1 rounded-full shadow-sm"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
 
       {/* Features Grid */}
@@ -97,11 +133,10 @@ export default function About() {
               animate={inView ? "visible" : "hidden"}
               variants={cardVariants}
             >
-              <Card className="border border-gray-200 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 
-                transition-all duration-300 rounded-xl">
+              <Card className="border border-gray-200 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-xl">
                 <CardContent className="p-8 flex flex-col items-center text-center">
-                  <div className="p-4 rounded-full bg-indigo-50 mb-4 transition-transform duration-300 hover:scale-110">
-                    <Icon className="w-7 h-7 text-indigo-600" />
+                  <div className="p-4 rounded-full bg-blue-100 mb-4 transition-transform duration-300 hover:scale-110">
+                    <Icon className="w-7 h-7 text-blue-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">
                     {feature.title}
@@ -112,6 +147,26 @@ export default function About() {
             </motion.div>
           );
         })}
+      </div>
+
+      {/* CTA Buttons at Bottom */}
+      <div className="text-center pt-20 space-y-4">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-xl hover:bg-blue-700 transition-all duration-300"
+          >
+            <Phone className="w-5 h-5" /> Contact Us
+          </a>
+
+          {/* Changed from Link to button */}
+          <button
+            onClick={handleNoMoreClick}
+            className="inline-flex items-center gap-2 border border-blue-600 text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300"
+          >
+             Know more
+          </button>
+        </div>
       </div>
     </section>
   );
