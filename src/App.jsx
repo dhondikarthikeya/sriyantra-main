@@ -10,7 +10,7 @@ import Pricing from "./components/ui/pricing";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ServiceDetails from "./components/ServiceDetails";
-import ViewPlans from "./components/ViewPlans";
+// import ViewPlans from "./components/ViewPlans";
 
 function App() {
   const location = useLocation();
