@@ -29,7 +29,7 @@ function App() {
   const hideFooterRoutes = [
     "/services-details",
     "/about-details",
-    "/view-plans",
+    // "/view-plans",
   ];
   const shouldShowFooter = !hideFooterRoutes.includes(location.pathname);
 
@@ -82,7 +82,7 @@ function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/services-details" element={<ServiceDetails />} />
           <Route path="/about-details" element={<AboutDetails />} />
-          <Route path="/view-plans" element={<ViewPlans />} />
+          {/* <Route path="/view-plans" element={<ViewPlans />} /> */}
         </Routes>
       </main>
       {shouldShowFooter && <Footer />}
