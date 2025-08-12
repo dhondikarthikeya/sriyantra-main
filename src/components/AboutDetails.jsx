@@ -13,12 +13,12 @@ export default function AboutDetails() {
   return (
     <>
       <section className="pt-20 pb-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 min-h-screen">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Header with animated star and gradient text */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 px-4 sm:px-0">
             <div className="flex items-center justify-center gap-2 mb-6 animate-pulse">
               <Star size={32} color="#3b82f6" />
-              <h1 className="text-5xl font-extrabold text-gray-900 tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight max-w-4xl mx-auto leading-tight">
                 Empowering{" "}
                 <span
                   className="text-blue-600 bg-gradient-to-r from-blue-400 to-indigo-600 bg-clip-text text-transparent"
@@ -29,7 +29,7 @@ export default function AboutDetails() {
                 Businesses to Go Online
               </h1>
             </div>
-            <p className="mt-4 text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed tracking-wide">
+            <p className="mt-4 text-gray-700 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed tracking-wide">
               At{" "}
               <span className="font-semibold text-blue-600 underline decoration-indigo-400 decoration-2 underline-offset-4">
                 Sri Yantra Tech
@@ -39,27 +39,28 @@ export default function AboutDetails() {
               transformation — making it accessible and effective for startups, retail
               stores, freelancers, and local service providers alike.
             </p>
-            <div className="inline-flex space-x-3 mt-8">
-              {[
-                { label: "Startups 🚀", bg: "bg-blue-100", text: "text-blue-700" },
-                { label: "Retail Stores 🏪", bg: "bg-blue-100", text: "text-blue-700" },
-                { label: "Freelancers 👩‍💻", bg: "bg-blue-100", text: "text-blue-700" },
-                { label: "Local Services 📍", bg: "bg-blue-100", text: "text-blue-700" },
-              ].map(({ label, bg, text }) => (
-                <span
-                  key={label}
-                  className={`${bg} ${text} rounded-full px-4 py-1 text-sm font-medium shadow-sm hover:shadow-md transition-shadow cursor-default`}
-                  aria-label={label}
-                  role="note"
-                >
-                  {label}
-                </span>
-              ))}
-            </div>
+            <div className="flex flex-wrap justify-center mt-8">
+  {[
+    { label: "Startups 🚀", bg: "bg-blue-100", text: "text-blue-700" },
+    { label: "Retail Stores 🏪", bg: "bg-blue-100", text: "text-blue-700" },
+    { label: "Freelancers 👩‍💻", bg: "bg-blue-100", text: "text-blue-700" },
+    { label: "Local Services 📍", bg: "bg-blue-100", text: "text-blue-700" },
+  ].map(({ label, bg, text }) => (
+    <span
+      key={label}
+      className={`${bg} ${text} rounded-full px-4 py-1 text-sm font-medium shadow-sm hover:shadow-md transition-shadow cursor-default m-1`}
+      aria-label={label}
+      role="note"
+    >
+      {label}
+    </span>
+  ))}
+</div>
+
           </div>
 
           {/* Feature Cards with hover effect and subtle shadows */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-20 px-4 sm:px-0">
             {[
               {
                 icon: (
@@ -115,18 +116,18 @@ export default function AboutDetails() {
             ].map(({ icon, title, description }) => (
               <div
                 key={title}
-                className="bg-white rounded-xl shadow-md p-8 text-center transition-transform hover:-translate-y-2 hover:shadow-lg duration-300"
+                className="bg-white rounded-xl shadow-md p-8 text-center transition-transform hover:-translate-y-2 hover:shadow-lg duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 tabIndex={0}
                 aria-label={title}
               >
                 <div>{icon}</div>
                 <h3 className="font-semibold text-xl mt-4 mb-3 text-gray-900">{title}</h3>
-                <p className="text-gray-600 text-sm">{description}</p>
+                <p className="text-gray-600 text-sm sm:text-base">{description}</p>
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-20 px-4 sm:px-0">
             {[
               {
                 icon: (
@@ -184,25 +185,25 @@ export default function AboutDetails() {
             ].map(({ icon, title, description }) => (
               <div
                 key={title}
-                className="bg-white rounded-xl shadow-md p-8 text-center transition-transform hover:-translate-y-2 hover:shadow-lg duration-300"
+                className="bg-white rounded-xl shadow-md p-8 text-center transition-transform hover:-translate-y-2 hover:shadow-lg duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 tabIndex={0}
                 aria-label={title}
               >
                 <div>{icon}</div>
                 <h3 className="font-semibold text-xl mt-4 mb-3 text-gray-900">{title}</h3>
-                <p className="text-gray-600 text-sm">{description}</p>
+                <p className="text-gray-600 text-sm sm:text-base">{description}</p>
               </div>
             ))}
           </div>
 
           {/* Rich content with separators and icons */}
-          <div className="max-w-4xl mx-auto space-y-16 text-gray-800">
+          <div className="max-w-4xl mx-auto space-y-16 text-gray-800 px-4 sm:px-0">
             <section>
-              <h2 className="text-3xl font-extrabold text-gray-900 mb-4 flex items-center gap-2">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4 flex items-center gap-2">
                 <Star size={28} className="text-blue-600 animate-pulse" />
                 Our Mission
               </h2>
-              <p className="text-lg leading-relaxed tracking-wide">
+              <p className="text-base sm:text-lg leading-relaxed tracking-wide">
                 To empower businesses with affordable and reliable online solutions,
                 ensuring growth and success in the digital era. We believe every business
                 deserves a beautiful, functional, and easy-to-manage website.
@@ -210,11 +211,11 @@ export default function AboutDetails() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-extrabold text-gray-900 mb-4 flex items-center gap-2">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4 flex items-center gap-2">
                 <Star size={28} className="text-indigo-600 animate-pulse" />
                 Our Vision
               </h2>
-              <p className="text-lg leading-relaxed tracking-wide">
+              <p className="text-base sm:text-lg leading-relaxed tracking-wide">
                 To be the leading platform for small and medium businesses worldwide,
                 fostering innovation and digital inclusion through cutting-edge technology
                 and dedicated support.
@@ -222,11 +223,11 @@ export default function AboutDetails() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-extrabold text-gray-900 mb-4 flex items-center gap-2">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4 flex items-center gap-2">
                 <Star size={28} className="text-purple-600 animate-pulse" />
                 Our Team
               </h2>
-              <p className="text-lg leading-relaxed tracking-wide">
+              <p className="text-base sm:text-lg leading-relaxed tracking-wide">
                 Our diverse team of passionate professionals is dedicated to supporting
                 your business journey with expertise in technology, design, marketing,
                 and customer success.
@@ -234,11 +235,11 @@ export default function AboutDetails() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-extrabold text-gray-900 mb-4 flex items-center gap-2">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4 flex items-center gap-2">
                 <Star size={28} className="text-teal-600 animate-pulse" />
                 Contact Information
               </h2>
-              <p className="text-lg leading-relaxed tracking-wide">
+              <p className="text-base sm:text-lg leading-relaxed tracking-wide">
                 Have questions? Reach out to us anytime at{" "}
                 <a
                   href="mailto:contact@blueflights.com"

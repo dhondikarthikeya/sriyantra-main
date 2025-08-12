@@ -121,16 +121,18 @@ const letterVariant = {
   },
 };
 
-/* ---------- Animated Title with spacing and pop-in effect ---------- */
-/* ---------- Animated Title with spacing and pop-in effect ---------- */
+/* ---------- Animated Title with responsive text ---------- */
 function AnimatedTitle({ text }: { text: string }) {
   return (
     <motion.h1
       variants={letterContainer}
       initial="hidden"
       animate="visible"
-      className="relative z-10 mt-6 text-5xl md:text-7xl font-semibold tracking-normal text-white font-poppins flex flex-wrap justify-center gap-1" 
-      style={{ letterSpacing: "-0.02em" }} // tighter than before
+      className="
+        relative z-10 mt-6 font-semibold tracking-normal text-white font-poppins flex flex-wrap justify-center gap-1
+        text-3xl sm:text-4xl md:text-5xl lg:text-7xl
+      "
+      style={{ letterSpacing: "-0.02em" }}
     >
       {text.split("").map((char, index) => (
         <motion.span
@@ -144,7 +146,6 @@ function AnimatedTitle({ text }: { text: string }) {
     </motion.h1>
   );
 }
-
 
 /* ---------- Main Component ---------- */
 export default function HeroMerged({
@@ -184,7 +185,8 @@ export default function HeroMerged({
           />
 
           <div
-            className="relative w-full max-w-5xl h-[520px] md:h-[640px] select-none"
+            className="relative w-full max-w-5xl h-[520px] md:h-[640px] select-none
+                       px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24"
             style={{ pointerEvents: "none" }}
           >
             {!prefersReducedMotion ? (
@@ -205,7 +207,10 @@ export default function HeroMerged({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
-            className="relative z-10 mt-4 max-w-2xl text-center text-gray-300 tracking-wide"
+            className="
+              relative z-10 mt-4 max-w-2xl text-center text-gray-300 tracking-wide
+              text-sm sm:text-base md:text-lg lg:text-xl px-4
+            "
           >
             Elegant code. Thoughtful design. Growth that lasts.
           </motion.p>

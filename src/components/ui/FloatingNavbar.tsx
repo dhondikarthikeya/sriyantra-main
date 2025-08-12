@@ -25,6 +25,7 @@ export default function FloatingNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    // Observe all sections except buttons for active nav highlighting
     const sections = navItems
       .filter((item) => !item.isButton)
       .map((item) => document.querySelector(item.href))
@@ -38,7 +39,6 @@ export default function FloatingNavbar() {
           if (entry.isIntersecting && current) {
             if (!current.isButton) {
               setActive(current.name);
-              setShowLogo(current.name === "Home");
             }
           }
         });
@@ -50,7 +50,33 @@ export default function FloatingNavbar() {
     );
 
     sections.forEach((section) => observer.observe(section));
+
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    // Separate observer only for Home section visibility to control logo visibility
+    const homeSection = document.querySelector("#home");
+    if (!homeSection) return;
+
+    const logoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // When home section is visible even partially, show logo
+          // When home section not visible, hide logo
+          setShowLogo(entry.isIntersecting);
+        });
+      },
+      {
+        // You can tweak threshold for when to hide logo (e.g., 0 = any visible, 1 = fully visible)
+        threshold: 0,
+        rootMargin: "0px",
+      }
+    );
+
+    logoObserver.observe(homeSection);
+
+    return () => logoObserver.disconnect();
   }, []);
 
   const handleClick = (item: NavItem) => {
@@ -112,6 +138,7 @@ export default function FloatingNavbar() {
           className="fixed top-6 left-6 z-[999]"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
         >
           <div className="w-[180px] h-[80px] backdrop-blur-md bg-white/20 border border-white/30 shadow-lg rounded-2xl flex items-center justify-center">
