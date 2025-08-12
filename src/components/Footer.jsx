@@ -15,6 +15,12 @@ export default function Footer() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
+  // Smooth scroll to section helper (removed TS annotation)
+  const scrollToSection = (id) => {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   const Shape = ({ className, delay = 0, size = 200, rotate = 0, gradient = "from-blue-500/[0.15]" }) => (
     <motion.div
       initial={{ opacity: 0, y: 80, rotate: rotate - 15 }}
@@ -60,22 +66,37 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
           {/* Brand Column */}
           <div>
-            <h3 className="text-3xl font-bold">Sri Yantra Tech</h3>
-            <p className="text-gray-200 mt-2 text-sm md:text-base max-w-xs mx-auto md:mx-0">
-              Affordable websites for small & medium businesses.
-            </p>
-            <p className="text-gray-300 mt-2 text-xs md:text-sm max-w-xs mx-auto md:mx-0">
-              We help you grow online with modern, scalable, and beautiful solutions.
-            </p>
-          </div>
+  <h3 className="text-3xl font-semibold">Sri Yantra Tech</h3>
+  <p className="text-gray-200 mt-2 text-sm md:text-base max-w-xs mx-auto md:mx-0">
+    Affordable websites for small & medium businesses.
+  </p>
+  <p className="text-gray-300 mt-2 text-xs md:text-sm max-w-xs mx-auto md:mx-0">
+    We help you grow online with modern, scalable, and beautiful solutions.
+  </p>
+</div>
+
 
           {/* Quick Links */}
           <div className="flex flex-col gap-2 items-center md:items-start">
             <h4 className="font-semibold text-white mb-2">Quick Links</h4>
-            <a href="#" className="text-gray-200 hover:text-white transition-colors">About Us</a>
-            <a href="#" className="text-gray-200 hover:text-white transition-colors">Contact Us</a>
-            <a href="#" className="text-gray-200 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-200 hover:text-white transition-colors">Terms of Service</a>
+            <button
+              onClick={() => scrollToSection("#about")}
+              className="text-gray-200 hover:text-white transition-colors text-left"
+            >
+              About Us
+            </button>
+            <button
+              onClick={() => scrollToSection("#contact")}
+              className="text-gray-200 hover:text-white transition-colors text-left"
+            >
+              Contact Us
+            </button>
+            <a href="#" className="text-gray-200 hover:text-white transition-colors">
+              Privacy Policy
+            </a>
+            <a href="#" className="text-gray-200 hover:text-white transition-colors">
+              Terms of Service
+            </a>
           </div>
 
           {/* Social & Newsletter */}

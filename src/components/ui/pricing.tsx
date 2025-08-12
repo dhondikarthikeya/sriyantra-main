@@ -123,7 +123,7 @@ export default function Pricing({
 
   return (
     <motion.div
-      className="container" // padding removed here
+      className="container"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -151,7 +151,6 @@ export default function Pricing({
         </motion.p>
       </div>
 
-      {/* Increased mobile gap */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-14 lg:gap-16 justify-center items-start">
         {plans.map((plan, index) => (
           <motion.div
@@ -161,8 +160,9 @@ export default function Pricing({
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
             className={cn(
-              "relative flex flex-col p-8 rounded-3xl border backdrop-blur-xl transition-all duration-300 mb-8 sm:mb-0",
-              "bg-white/80 shadow-md hover:shadow-2xl hover:scale-[1.015]",
+              "relative flex flex-col p-8 rounded-3xl border backdrop-blur-xl transition-all duration-300 bg-white/80 shadow-md hover:shadow-2xl hover:scale-[1.015]",
+              // Remove bottom margin for Business Plan on mobile
+              index === 1 ? "mb-0 sm:mb-0" : "mb-8 sm:mb-0",
               plan.isPopular
                 ? "border-primary shadow-2xl scale-[1.05] z-10"
                 : "border-border"

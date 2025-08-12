@@ -65,22 +65,25 @@ export default function PortfolioSection() {
     <section id="portfolio" className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-center text-gray-800 mb-4"
-        >
-          Our Portfolio
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-center text-gray-600 max-w-2xl mx-auto mb-12"
-        >
-          A selection of our recent work — combining creativity, technology, and business impact.
-        </motion.p>
+        <div className="text-center mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl font-bold text-gray-800 inline-block relative"
+          >
+            Our Portfolio
+            <span className="block w-16 h-1 bg-blue-500 rounded-full mx-auto mt-2"></span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-gray-600 max-w-2xl mx-auto mt-4"
+          >
+            A selection of our recent work — combining creativity, technology, and business impact.
+          </motion.p>
+        </div>
 
         {/* Responsive Category Filter */}
         <div className="mb-10 overflow-x-auto">
@@ -91,7 +94,7 @@ export default function PortfolioSection() {
                 onClick={() => setFilter(cat)}
                 className={`px-5 py-2 rounded-full text-sm font-medium border transition-colors duration-300 whitespace-nowrap ${
                   filter === cat
-                    ? "bg-indigo-600 text-white border-indigo-600"
+                    ? "bg-blue-600 text-white border-blue-600"  // changed indigo to blue here
                     : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
                 }`}
               >
@@ -120,10 +123,10 @@ export default function PortfolioSection() {
                 />
               </div>
               <div className="p-6">
-                <span className="text-sm text-indigo-600 font-medium">
+                <span className="text-sm text-blue-600 font-medium">{/* changed indigo to blue */}
                   {project.category}
                 </span>
-                <h3 className="mt-2 text-xl font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors">
+                <h3 className="mt-2 text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">{/* changed indigo to blue */}
                   {project.title}
                 </h3>
                 <p className="mt-2 text-gray-600 text-sm">{project.description}</p>

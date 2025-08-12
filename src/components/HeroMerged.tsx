@@ -18,6 +18,11 @@ function Earth() {
     "https://threejs.org/examples/textures/planets/earth_specular_2048.jpg",
   ]);
 
+  // Determine scale based on screen width
+  const isSmallScreen =
+    typeof window !== "undefined" && window.innerWidth < 1024; // mobile & tablet
+  const earthScale = isSmallScreen ? 1.4 : 1.6; // slightly smaller on small screens
+
   useFrame((_, delta) => {
     if (earthRef.current) {
       earthRef.current.rotation.y += delta * 0.05;
@@ -25,7 +30,7 @@ function Earth() {
   });
 
   return (
-    <mesh ref={earthRef} scale={1.6}>
+    <mesh ref={earthRef} scale={earthScale}>
       <sphereGeometry args={[1, 64, 64]} />
       <meshPhongMaterial
         map={colorMap}
@@ -41,8 +46,12 @@ function Earth() {
 
 /* ---------- Atmosphere Glow ---------- */
 function Atmosphere() {
+  const isSmallScreen =
+    typeof window !== "undefined" && window.innerWidth < 1024;
+  const atmosphereScale = isSmallScreen ? 1.5 : 1.7; // match smaller Earth size
+
   return (
-    <mesh scale={1.7}>
+    <mesh scale={atmosphereScale}>
       <sphereGeometry args={[1, 64, 64]} />
       <meshBasicMaterial
         color={new THREE.Color(0x66ccff)}
