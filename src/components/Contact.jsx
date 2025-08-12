@@ -3,31 +3,54 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function GetQuote() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState(null); // success or error message
   const formRef = useRef(null);
   const [formHeight, setFormHeight] = useState("auto");
+
+  const GETFORM_ENDPOINT = "https://getform.io/f/brogoola"; // ← Replace this with your Getform endpoint URL
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Thank you! Your request has been submitted.");
-    setFormData({ name: "", email: "", message: "" });
+    setStatus(null);
+
+    try {
+      const formPayload = new FormData();
+      formPayload.append("name", formData.name);
+      formPayload.append("email", formData.email);
+      formPayload.append("message", formData.message);
+
+      const response = await fetch(GETFORM_ENDPOINT, {
+        method: "POST",
+        body: formPayload,
+      });
+
+      if (response.ok) {
+        setStatus("Thank you! Your request has been submitted.");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("Oops! Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setStatus("Network error. Please try again.");
+    }
   };
 
-  // 🔹 Measure form height dynamically to match animation
+  // Dynamically measure and set form height to sync with animation height
   useEffect(() => {
-    if (formRef.current) {
-      setFormHeight(formRef.current.offsetHeight + "px");
-    }
-    const handleResize = () => {
+    const updateHeight = () => {
       if (formRef.current) {
         setFormHeight(formRef.current.offsetHeight + "px");
       }
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    updateHeight();
+
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
   }, []);
 
   return (
@@ -45,7 +68,6 @@ export default function GetQuote() {
 
       {/* Lottie + Form Layout */}
       <div className="flex flex-col md:flex-row items-stretch justify-center gap-12 px-4 md:px-8 max-w-6xl mx-auto">
-        
         {/* Lottie Animation - Matches Form Height */}
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <DotLottieReact
@@ -54,7 +76,7 @@ export default function GetQuote() {
             autoplay
             style={{
               width: "100%",
-              height: formHeight, // 🔹 Matches the form height dynamically
+              height: formHeight,
               objectFit: "contain",
             }}
           />
@@ -65,7 +87,7 @@ export default function GetQuote() {
           ref={formRef}
           className="w-full md:w-1/2 bg-white shadow-lg border border-blue-100 rounded-2xl p-8 space-y-4 flex flex-col justify-center"
         >
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             <input
               type="text"
               name="name"
@@ -89,7 +111,7 @@ export default function GetQuote() {
               placeholder="Your Message"
               value={formData.message}
               onChange={handleChange}
-              rows="4"
+              rows={4}
               required
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             />
@@ -100,6 +122,18 @@ export default function GetQuote() {
               Submit Request
             </button>
           </form>
+          {/* Submission status message */}
+          {status && (
+            <p
+              className={`mt-4 text-center font-medium ${
+                status.startsWith("Thank")
+                  ? "text-green-600"
+                  : "text-red-600"
+              }`}
+            >
+              {status}
+            </p>
+          )}
         </div>
       </div>
     </section>

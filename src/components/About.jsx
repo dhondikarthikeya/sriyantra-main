@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   Globe,
   Phone,
-  XCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -50,12 +49,13 @@ const features = [
 ];
 
 export default function About() {
+  // Faster animation settings
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, delay: i * 0.2, ease: "easeOut" },
+      transition: { duration: 0.4, delay: i * 0.08, ease: "easeOut" }, // Faster duration & delay
     }),
   };
 
@@ -66,7 +66,7 @@ export default function About() {
 
   const navigate = useNavigate();
 
-  // Handler for "No More" button click
+  // Handler for "Know More" button click
   const handleNoMoreClick = () => {
     navigate("/about-details");
     setTimeout(() => {
@@ -82,7 +82,7 @@ export default function About() {
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight sm:leading-snug md:leading-snug mb-6 max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }} // Faster
           viewport={{ once: true }}
         >
           Empowering{" "}
@@ -102,19 +102,16 @@ export default function About() {
 
         {/* Tags */}
         <div className="flex flex-wrap justify-center gap-2 mt-6">
-          {[
-            "Startups 🚀",
-            "Retail Stores 🏪",
-            "Freelancers 🧑‍💻",
-            "Local Services 📍",
-          ].map((tag, i) => (
-            <span
-              key={i}
-              className="bg-blue-100 text-blue-700 text-sm font-medium px-4 py-1 rounded-full shadow-sm"
-            >
-              {tag}
-            </span>
-          ))}
+          {["Startups 🚀", "Retail Stores 🏪", "Freelancers 🧑‍💻", "Local Services 📍"].map(
+            (tag, i) => (
+              <span
+                key={i}
+                className="bg-blue-100 text-blue-700 text-sm font-medium px-4 py-1 rounded-full shadow-sm"
+              >
+                {tag}
+              </span>
+            )
+          )}
         </div>
       </div>
 
@@ -159,12 +156,11 @@ export default function About() {
             <Phone className="w-5 h-5" /> Contact Us
           </a>
 
-          {/* Changed from Link to button */}
           <button
             onClick={handleNoMoreClick}
             className="inline-flex items-center gap-2 border border-blue-600 text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300"
           >
-             Know more
+            Know more
           </button>
         </div>
       </div>

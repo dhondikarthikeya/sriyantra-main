@@ -25,7 +25,6 @@ export default function FloatingNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Observe all sections except buttons for active nav highlighting
     const sections = navItems
       .filter((item) => !item.isButton)
       .map((item) => document.querySelector(item.href))
@@ -36,10 +35,8 @@ export default function FloatingNavbar() {
         entries.forEach((entry) => {
           const id = entry.target.getAttribute("id");
           const current = navItems.find((item) => item.href === `#${id}`);
-          if (entry.isIntersecting && current) {
-            if (!current.isButton) {
-              setActive(current.name);
-            }
+          if (entry.isIntersecting && current && !current.isButton) {
+            setActive(current.name);
           }
         });
       },
@@ -50,43 +47,36 @@ export default function FloatingNavbar() {
     );
 
     sections.forEach((section) => observer.observe(section));
-
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    // Separate observer only for Home section visibility to control logo visibility
     const homeSection = document.querySelector("#home");
     if (!homeSection) return;
 
     const logoObserver = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          // When home section is visible even partially, show logo
-          // When home section not visible, hide logo
-          setShowLogo(entry.isIntersecting);
-        });
+        entries.forEach((entry) => setShowLogo(entry.isIntersecting));
       },
-      {
-        // You can tweak threshold for when to hide logo (e.g., 0 = any visible, 1 = fully visible)
-        threshold: 0,
-        rootMargin: "0px",
-      }
+      { threshold: 0, rootMargin: "0px" }
     );
 
     logoObserver.observe(homeSection);
-
     return () => logoObserver.disconnect();
   }, []);
 
   const handleClick = (item: NavItem) => {
     if (!item.isButton) setActive(item.name);
     const el = document.querySelector(item.href);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (el) {
+      const yOffset = -30; // adjust for navbar height
+      const y =
+        el.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
     setMenuOpen(false);
   };
 
-  // Custom animated hamburger to X icon component
   const MenuToggle = ({ toggled }: { toggled: boolean }) => (
     <svg
       width="24"
@@ -132,7 +122,6 @@ export default function FloatingNavbar() {
 
   return (
     <>
-      {/* Floating Glass Logo - Visible only on Home section */}
       {showLogo && (
         <motion.div
           className="fixed top-6 left-6 z-[999]"
@@ -147,7 +136,6 @@ export default function FloatingNavbar() {
         </motion.div>
       )}
 
-      {/* Desktop Navigation */}
       <div className="hidden md:block fixed top-6 left-1/2 -translate-x-1/2 z-[998]">
         <nav className="relative flex items-center gap-2 px-2 py-1 bg-white rounded-full shadow-lg border border-gray-200">
           {navItems.map((item) => {
@@ -166,7 +154,6 @@ export default function FloatingNavbar() {
                 )}
               >
                 <span className="relative z-20">{item.name}</span>
-
                 {!isButton && isActive && (
                   <>
                     <motion.div
@@ -187,7 +174,6 @@ export default function FloatingNavbar() {
         </nav>
       </div>
 
-      {/* Mobile Menu Button */}
       <div className="md:hidden fixed top-6 right-6 z-[999]">
         <button
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -198,7 +184,6 @@ export default function FloatingNavbar() {
         </button>
       </div>
 
-      {/* Mobile Overlay Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div

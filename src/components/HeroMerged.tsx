@@ -18,10 +18,9 @@ function Earth() {
     "https://threejs.org/examples/textures/planets/earth_specular_2048.jpg",
   ]);
 
-  // Determine scale based on screen width
   const isSmallScreen =
-    typeof window !== "undefined" && window.innerWidth < 1024; // mobile & tablet
-  const earthScale = isSmallScreen ? 1.35 : 1.6; // slightly smaller only on small screens
+    typeof window !== "undefined" && window.innerWidth < 1024;
+  const earthScale = isSmallScreen ? 1.35 : 1.6;
 
   useFrame((_, delta) => {
     if (earthRef.current) {
@@ -48,7 +47,7 @@ function Earth() {
 function Atmosphere() {
   const isSmallScreen =
     typeof window !== "undefined" && window.innerWidth < 1024;
-  const atmosphereScale = isSmallScreen ? 1.45 : 1.7; // match smaller Earth size
+  const atmosphereScale = isSmallScreen ? 1.45 : 1.7;
 
   return (
     <mesh scale={atmosphereScale}>
@@ -68,7 +67,7 @@ function CenteredStarField() {
   return (
     <Sparkles
       count={800}
-      scale={[10, 6, 10]} // Focused area
+      scale={[10, 6, 10]}
       size={2}
       speed={0.3}
       noise={1}
@@ -130,7 +129,7 @@ const letterVariant = {
   },
 };
 
-/* ---------- Animated Title with responsive text ---------- */
+/* ---------- Animated Title with improved letter spacing ---------- */
 function AnimatedTitle({ text }: { text: string }) {
   return (
     <motion.h1
@@ -138,10 +137,13 @@ function AnimatedTitle({ text }: { text: string }) {
       initial="hidden"
       animate="visible"
       className="
-        relative z-10 mt-6 font-semibold tracking-normal text-white font-poppins flex flex-wrap justify-center gap-1
+        relative z-10 mt-6 
+        font-semibold lg:font-semibold
+        text-white font-poppins flex flex-wrap justify-center
+        gap-[0.05rem] sm:gap-[0.1rem] md:gap-[0.15rem] lg:gap-[0.2rem]
+        tracking-[-0.015em] sm:tracking-[-0.02em] md:tracking-[-0.025em] lg:tracking-[-0.03em]
         text-3xl sm:text-4xl md:text-5xl lg:text-7xl
       "
-      style={{ letterSpacing: "-0.02em" }}
     >
       {text.split("").map((char, index) => (
         <motion.span
@@ -228,7 +230,6 @@ export default function HeroMerged({
 
       {!splashActive && (
         <>
-          {/* FloatingNavbar with reduced motion only on mobile/tablet */}
           <FloatingNavbar
             animationConfig={
               typeof window !== "undefined" && window.innerWidth < 1024

@@ -65,7 +65,6 @@ export default function Services() {
   // Navigate & reset scroll instantly
   const handleKnowMoreClick = () => {
     navigate("/services-details");
-    // Reset scroll position right after navigation
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "instant" });
     }, 0);
@@ -92,7 +91,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
               className="h-full"
             >
               <Card className="group relative h-full rounded-2xl border border-white/30 
