@@ -21,7 +21,7 @@ function Earth() {
   // Determine scale based on screen width
   const isSmallScreen =
     typeof window !== "undefined" && window.innerWidth < 1024; // mobile & tablet
-  const earthScale = isSmallScreen ? 1.4 : 1.6; // slightly smaller on small screens
+  const earthScale = isSmallScreen ? 1.35 : 1.6; // slightly smaller only on small screens
 
   useFrame((_, delta) => {
     if (earthRef.current) {
@@ -48,7 +48,7 @@ function Earth() {
 function Atmosphere() {
   const isSmallScreen =
     typeof window !== "undefined" && window.innerWidth < 1024;
-  const atmosphereScale = isSmallScreen ? 1.5 : 1.7; // match smaller Earth size
+  const atmosphereScale = isSmallScreen ? 1.45 : 1.7; // match smaller Earth size
 
   return (
     <mesh scale={atmosphereScale}>
@@ -228,7 +228,14 @@ export default function HeroMerged({
 
       {!splashActive && (
         <>
-          <FloatingNavbar />
+          {/* FloatingNavbar with reduced motion only on mobile/tablet */}
+          <FloatingNavbar
+            animationConfig={
+              typeof window !== "undefined" && window.innerWidth < 1024
+                ? { y: [0, -4, 0], transition: { duration: 2, repeat: Infinity } }
+                : { y: [0, -10, 0], transition: { duration: 2, repeat: Infinity } }
+            }
+          />
           <HeroGeometric
             badge="Sri Yantra Tech"
             title1="Affordable Websites"
