@@ -149,7 +149,7 @@ export default function Footer() {
                 <Mail className="w-4 h-4" />
               </div>
               <span className="text-white text-sm font-medium break-all">
-                contact@sriyantratech.com
+                sriyantratech1@gmail.com
               </span>
             </motion.a>
 
@@ -164,7 +164,7 @@ export default function Footer() {
                 <PhoneCall className="w-4 h-4" />
               </div>
               <span className="text-white text-sm font-medium break-all">
-                +91 98765 43210
+                +91 7729959988
               </span>
             </motion.a>
           </div>
@@ -173,20 +173,20 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start gap-4">
             <h4 className="font-semibold text-white mb-1">Connect With Us</h4>
             <div className="flex gap-6">
-              <a
+              {/* <a
                 href="#"
                 title="Facebook"
                 className="hover:scale-110 transition-transform"
               >
                 <Facebook className="w-6 h-6 text-white/80 hover:text-white" />
-              </a>
-              <a
+              </a> */}
+              {/* <a
                 href="#"
                 title="Twitter"
                 className="hover:scale-110 transition-transform"
               >
                 <Twitter className="w-6 h-6 text-white/80 hover:text-white" />
-              </a>
+              </a> */}
               <a
                 href="#"
                 title="Instagram"
@@ -194,13 +194,13 @@ export default function Footer() {
               >
                 <Instagram className="w-6 h-6 text-white/80 hover:text-white" />
               </a>
-              <a
+              {/* <a
                 href="#"
                 title="LinkedIn"
                 className="hover:scale-110 transition-transform"
               >
                 <Linkedin className="w-6 h-6 text-white/80 hover:text-white" />
-              </a>
+              </a> */}
             </div>
 
             {/* Newsletter Subscription */}

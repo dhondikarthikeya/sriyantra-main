@@ -55,13 +55,13 @@ const plans: PricingPlan[] = [
     period: "One-Time",
     features: [
       "Up to 5 Pages (Home, About, Services, Contact, etc.)",
-      "Custom UI/UX Design",
+      "Basic Custom UI/UX Design",
       "Social Media Integration",
       "SEO-Ready Pages (Basic)",
-      "Google Business Profile Setup",
+      "Support for 3 Month",
       "Analytics Integration (Google Analytics)",
       "Delivery in 5–7 Days",
-      "Support for 3 Month & more",
+      "Google Business Profile Setup& more",
     ],
     description:
       "Best For: Small & Medium Businesses needing a strong digital presence.",
@@ -128,9 +128,13 @@ export default function Pricing({
     }
   };
 
+  const formatPrice = (price: string | number) => {
+    return Number(price).toLocaleString("en-IN");
+  };
+
   return (
     <motion.div
-      className="container px-0 lg:px-8" // padding 0 on mobile, padding 8 on large screens+
+      className="container px-0 lg:px-8"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -158,7 +162,7 @@ export default function Pricing({
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-14 lg:gap-16 justify-center items-start px-0 lg:px-6"> {/* no horizontal padding on mobile, padding 6 on large screens+ */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-14 lg:gap-16 justify-center items-start px-0 lg:px-6">
         {plans.map((plan, index) => (
           <motion.div
             key={index}
@@ -203,18 +207,18 @@ export default function Pricing({
               {plan.isLaunchingOffer && plan.launchOfferPrice ? (
                 <>
                   <span className="text-lg font-semibold text-muted-foreground line-through">
-                    ₹{plan.price}
+                    ₹{formatPrice(plan.price)}
                   </span>
                   <span className="text-5xl font-extrabold tracking-tight text-foreground drop-shadow-md">
-                    ₹{plan.launchOfferPrice}
+                    ₹{formatPrice(plan.launchOfferPrice)}
                   </span>
                   <span className="text-xs font-medium text-green-600">
-                    Save ₹{Number(plan.price) - Number(plan.launchOfferPrice)}
+                    Save ₹{formatPrice(Number(plan.price) - Number(plan.launchOfferPrice))}
                   </span>
                 </>
               ) : (
                 <span className="text-5xl font-extrabold tracking-tight text-foreground drop-shadow-md">
-                  ₹{plan.price}
+                  ₹{formatPrice(plan.price)}
                 </span>
               )}
               <span className="text-sm font-medium text-muted-foreground">

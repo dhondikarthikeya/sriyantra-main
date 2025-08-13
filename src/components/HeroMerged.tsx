@@ -239,8 +239,8 @@ export default function HeroMerged({
           />
           <HeroGeometric
             badge="Sri Yantra Tech"
-            title1="Affordable Websites"
-            title2="For Small Businesses @₹4999"
+            title1="Affordable Websites "
+            title2="for Small & Medium Enterprises @₹4,999"
           />
         </>
       )}
