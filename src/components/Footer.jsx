@@ -154,7 +154,7 @@ export default function Footer() {
             </motion.a>
 
             <motion.a
-              href="tel:+919876543210"
+              href="tel:+917729959988"
               className="group flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-md px-4 py-2 shadow-md hover:shadow-pink-500/60 transition-shadow w-full max-w-xs"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
