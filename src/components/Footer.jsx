@@ -139,7 +139,7 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-2">Contact Info</h4>
 
             <motion.a
-              href="mailto:contact@sriyantratech.com"
+              href="mailto:sriyantratech1@gmail.com"
               className="group flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-md px-4 py-2 shadow-md hover:shadow-blue-500/60 transition-shadow w-full max-w-xs"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
