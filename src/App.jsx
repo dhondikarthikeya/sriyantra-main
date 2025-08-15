@@ -26,11 +26,14 @@ function App() {
       setFadeOut(true);
       setTimeout(() => setShowSplash(false), 500);
     }, 2500);
+
     return () => clearTimeout(timer);
   }, []);
 
-  // ✅ Routes that already include their own footer
-  const pagesWithOwnFooter = [
+  // ✅ Hide footer for city pages (normal + -web-design)
+  const hideFooterRoutes = [
+    "/services-details",
+    "/about-details",
     "/hyderabad",
     "/hyderabad-web-design",
     "/nizamabad",
@@ -38,18 +41,9 @@ function App() {
     "/armoor",
     "/armoor-web-design",
   ];
+  const shouldShowFooter = !hideFooterRoutes.includes(location.pathname);
 
-  // ✅ Routes that should not show the global footer
-  const hideFooterRoutes = [
-    "/services-details",
-    "/about-details",
-    ...pagesWithOwnFooter
-  ];
-
-  const shouldShowFooter =
-    !hideFooterRoutes.includes(location.pathname);
-
-  // ✅ Splash screen
+  // ✅ Splash screen logic
   if (location.pathname === "/" && showSplash) {
     return (
       <main>
@@ -60,7 +54,7 @@ function App() {
     );
   }
 
-  // ✅ Homepage
+  // ✅ Homepage after splash
   if (location.pathname === "/") {
     return (
       <>
