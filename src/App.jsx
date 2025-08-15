@@ -11,6 +11,11 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ServiceDetails from "./components/ServiceDetails";
 
+// ✅ New city-specific pages
+import Hyderabad from "./components/Hyderabad";
+import Nizamabad from "./components/Nizamabad";
+import Armoor from "./components/Armoor";
+
 function App() {
   const location = useLocation();
   const [showSplash, setShowSplash] = useState(true);
@@ -25,24 +30,31 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  // ✅ Hide footer for city pages (normal + -web-design)
   const hideFooterRoutes = [
     "/services-details",
     "/about-details",
+    "/hyderabad",
+    "/hyderabad-web-design",
+    "/nizamabad",
+    "/nizamabad-web-design",
+    "/armoor",
+    "/armoor-web-design",
   ];
   const shouldShowFooter = !hideFooterRoutes.includes(location.pathname);
 
+  // ✅ Splash screen logic
   if (location.pathname === "/" && showSplash) {
     return (
-      <>
-        <main>
-          <section id="home">
-            <HeroMerged splashActive={true} fadeOut={fadeOut} />
-          </section>
-        </main>
-      </>
+      <main>
+        <section id="home">
+          <HeroMerged splashActive={true} fadeOut={fadeOut} />
+        </section>
+      </main>
     );
   }
 
+  // ✅ Homepage after splash
   if (location.pathname === "/") {
     return (
       <>
@@ -71,12 +83,23 @@ function App() {
     );
   }
 
+  // ✅ Other routes
   return (
     <>
       <main key={location.pathname}>
         <Routes location={location} key={location.pathname}>
           <Route path="/services-details" element={<ServiceDetails />} />
           <Route path="/about-details" element={<AboutDetails />} />
+
+          {/* ✅ City-specific routes */}
+          <Route path="/hyderabad" element={<Hyderabad />} />
+          <Route path="/hyderabad-web-design" element={<Hyderabad />} />
+
+          <Route path="/nizamabad" element={<Nizamabad />} />
+          <Route path="/nizamabad-web-design" element={<Nizamabad />} />
+
+          <Route path="/armoor" element={<Armoor />} />
+          <Route path="/armoor-web-design" element={<Armoor />} />
         </Routes>
       </main>
       {shouldShowFooter && <Footer />}
