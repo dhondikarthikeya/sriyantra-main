@@ -49,7 +49,7 @@ export default function Armoor() {
           <Contact />
         </section>
       </main>
-{/*       <Footer /> */}
+  <Footer /> 
     </>
   );
 }
