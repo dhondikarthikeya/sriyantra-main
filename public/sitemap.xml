@@ -33,4 +33,62 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Service details -->
+  <url>
+    <loc>https://www.sriyantratech.com/services-details</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- About details -->
+  <url>
+    <loc>https://www.sriyantratech.com/about-details</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Hyderabad pages -->
+  <url>
+    <loc>https://www.sriyantratech.com/hyderabad</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.sriyantratech.com/hyderabad-web-design</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Nizamabad pages -->
+  <url>
+    <loc>https://www.sriyantratech.com/nizamabad</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.sriyantratech.com/nizamabad-web-design</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Armoor pages -->
+  <url>
+    <loc>https://www.sriyantratech.com/armoor</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.sriyantratech.com/armoor-web-design</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
