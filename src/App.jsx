@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Routes, Route } from "react-router-dom";
 
+
 import HeroMerged from "./components/HeroMerged";
 import About from "./components/About";
 import AboutDetails from "./components/AboutDetails";
