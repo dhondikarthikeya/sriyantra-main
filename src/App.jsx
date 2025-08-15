@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Routes, Route } from "react-router-dom";
 
-
 import HeroMerged from "./components/HeroMerged";
 import About from "./components/About";
 import AboutDetails from "./components/AboutDetails";
@@ -27,14 +26,11 @@ function App() {
       setFadeOut(true);
       setTimeout(() => setShowSplash(false), 500);
     }, 2500);
-
     return () => clearTimeout(timer);
   }, []);
 
-  // ✅ Hide footer for city pages (normal + -web-design)
-  const hideFooterRoutes = [
-    "/services-details",
-    "/about-details",
+  // ✅ Routes that already include their own footer
+  const pagesWithOwnFooter = [
     "/hyderabad",
     "/hyderabad-web-design",
     "/nizamabad",
@@ -42,9 +38,18 @@ function App() {
     "/armoor",
     "/armoor-web-design",
   ];
-  const shouldShowFooter = !hideFooterRoutes.includes(location.pathname);
 
-  // ✅ Splash screen logic
+  // ✅ Routes that should not show the global footer
+  const hideFooterRoutes = [
+    "/services-details",
+    "/about-details",
+    ...pagesWithOwnFooter
+  ];
+
+  const shouldShowFooter =
+    !hideFooterRoutes.includes(location.pathname);
+
+  // ✅ Splash screen
   if (location.pathname === "/" && showSplash) {
     return (
       <main>
@@ -55,7 +60,7 @@ function App() {
     );
   }
 
-  // ✅ Homepage after splash
+  // ✅ Homepage
   if (location.pathname === "/") {
     return (
       <>
@@ -109,3 +114,4 @@ function App() {
 }
 
 export default App;
+
