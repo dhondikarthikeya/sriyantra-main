@@ -48,7 +48,7 @@ export default function Nizamabad() {
           <Contact />
         </section>
       </main>
-      <Footer />
+{/*       <Footer /> */}
     </>
   );
 }
