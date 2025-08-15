@@ -48,7 +48,7 @@ export default function Hyderabad() {
           <Contact />
         </section>
       </main>
-{/*       <Footer /> */}
+ <Footer /> 
     </>
   );
 }
