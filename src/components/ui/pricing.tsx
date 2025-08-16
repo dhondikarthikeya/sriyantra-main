@@ -50,7 +50,7 @@ const plans: PricingPlan[] = [
   },
   {
     name: "🚀 Business Plan",
-    price: "14999",
+    price: "19999",
     yearlyPrice: "10499",
     period: "One-Time",
     features: [
@@ -73,7 +73,7 @@ const plans: PricingPlan[] = [
   },
   {
     name: "🔥 Pro Plan",
-    price: "29999",
+    price: "34999",
     yearlyPrice: "20999",
     period: "Starting At",
     features: [
