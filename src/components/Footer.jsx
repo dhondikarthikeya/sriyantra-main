@@ -154,7 +154,7 @@ export default function Footer() {
             </motion.a>
 
             <motion.a
-              href="tel:+917729959988"
+              href="tel:+917013540986"
               className="group flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-md px-4 py-2 shadow-md hover:shadow-pink-500/60 transition-shadow w-full max-w-xs"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -164,7 +164,7 @@ export default function Footer() {
                 <PhoneCall className="w-4 h-4" />
               </div>
               <span className="text-white text-sm font-medium break-all">
-                +91 7729959988
+                +91 7013540986
               </span>
             </motion.a>
           </div>
