@@ -9,30 +9,30 @@
     <priority>1.0</priority>
   </url>
 
-<!--   <!-- About page -->
-  <url>
+ <!-- About page -->
+<!--   <url>
     <loc>https://www.sriyantratech.com/about</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  </url> -->
 
   <!-- Services page -->
-  <url>
+<!--   <url>
     <loc>https://www.sriyantratech.com/services</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  </url> -->
 
   <!-- Contact page -->
-  <url>
+<!--   <url>
     <loc>https://www.sriyantratech.com/contact</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
- -->
+  </url> -->
+
   <!-- Service details -->
   <url>
     <loc>https://www.sriyantratech.com/services-details</loc>
