@@ -22,7 +22,7 @@ export default function AboutDetails() {
                 <span className="text-blue-600 bg-gradient-to-r from-blue-400 to-indigo-600 bg-clip-text text-transparent">
                   Small & Medium
                 </span>{" "}
-                Businesses to Go Online
+                 Enterprises to Go Online
               </h1>
             </div>
             <p className="mt-4 text-gray-700 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed tracking-wide">
@@ -30,7 +30,7 @@ export default function AboutDetails() {
               <span className="font-semibold text-blue-600 underline decoration-indigo-400 decoration-2 underline-offset-4">
                 Sri Yantra Tech
               </span>
-              , we specialize in helping businesses build a strong, professional
+              , we specialize in helping Enterprises build a strong, professional
               online presence quickly and affordably. Our goal is to democratize
               digital transformation — making it accessible and effective for
               startups, retail stores, freelancers, and local service providers
@@ -44,7 +44,7 @@ export default function AboutDetails() {
             ">
               {[
                 { label: "Startups 🚀", bg: "bg-blue-100", text: "text-blue-700" },
-                { label: "Retail Stores 🏪", bg: "bg-blue-100", text: "text-blue-700" },
+                { label: "Enterprises 🏪", bg: "bg-blue-100", text: "text-blue-700" },
                 { label: "Freelancers 👩‍💻", bg: "bg-blue-100", text: "text-blue-700" },
                 { label: "Local Services 📍", bg: "bg-blue-100", text: "text-blue-700" },
               ].map(({ label, bg, text }) => (
@@ -70,7 +70,7 @@ export default function AboutDetails() {
                   </svg>
                 ),
                 title: "Affordable Pricing",
-                description: "Launch your business online without breaking the bank. Transparent pricing with no hidden fees.",
+                description: "Launch your Enterprises online without breaking the bank. Transparent pricing with no hidden fees.",
               },
               {
                 icon: (
@@ -79,7 +79,7 @@ export default function AboutDetails() {
                   </svg>
                 ),
                 title: "Growth Focused",
-                description: "Designed to help small & medium businesses scale efficiently and effectively.",
+                description: "Designed to help small & medium Enterprises scale efficiently and effectively.",
               },
               {
                 icon: (
@@ -120,7 +120,7 @@ export default function AboutDetails() {
                   </svg>
                 ),
                 title: "Secure & Reliable",
-                description: "We prioritize your website's security and uptime so you can focus on your business.",
+                description: "We prioritize your website's security and uptime so you can focus on your enterprises.",
               },
               {
                 icon: (
@@ -147,17 +147,17 @@ export default function AboutDetails() {
               {
                 title: "Our Mission",
                 iconColor: "text-blue-600",
-                text: "To empower businesses with affordable and reliable online solutions, ensuring growth and success in the digital era. We believe every business deserves a beautiful, functional, and easy-to-manage website.",
+                text: "To empower enterprises with affordable and reliable online solutions, ensuring growth and success in the digital era. We believe every enterprises deserves a beautiful, functional, and easy-to-manage website.",
               },
               {
                 title: "Our Vision",
                 iconColor: "text-indigo-600",
-                text: "To be the leading platform for small and medium businesses worldwide, fostering innovation and digital inclusion through cutting-edge technology and dedicated support.",
+                text: "To be the leading platform for small and medium enterprises worldwide, fostering innovation and digital inclusion through cutting-edge technology and dedicated support.",
               },
               {
                 title: "Our Team",
                 iconColor: "text-purple-600",
-                text: "Our diverse team of passionate professionals is dedicated to supporting your business journey with expertise in technology, design, marketing, and customer success.",
+                text: "Our diverse team of passionate professionals is dedicated to supporting your businesenterprises journey with expertise in technology, design, marketing, and customer success.",
               },
               {
                 title: "Contact Information",
