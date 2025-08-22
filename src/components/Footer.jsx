@@ -189,7 +189,7 @@ export default function Footer() {
                 <Twitter className="w-6 h-6 text-white/80 hover:text-white" />
               </a> */}
               <a
-                href="#"
+                href="https://www.instagram.com/sri_yantra_tech/"
                 title="Instagram"
                 className="hover:scale-110 transition-transform"
               >
