@@ -16,6 +16,9 @@ import Hyderabad from "./components/Hyderabad";
 import Nizamabad from "./components/Nizamabad";
 import Armoor from "./components/Armoor";
 
+// ✅ Terms & Conditions page
+import TermsAndConditions from "./components/TermsAndConditions";
+
 function App() {
   const location = useLocation();
   const [showSplash, setShowSplash] = useState(true);
@@ -40,6 +43,7 @@ function App() {
     "/nizamabad-web-design",
     "/armoor",
     "/armoor-web-design",
+    "/terms", // hide footer if you don’t want it on terms page
   ];
   const shouldShowFooter = !hideFooterRoutes.includes(location.pathname);
 
@@ -100,6 +104,20 @@ function App() {
 
           <Route path="/armoor" element={<Armoor />} />
           <Route path="/armoor-web-design" element={<Armoor />} />
+
+          {/* ✅ Terms & Conditions route */}
+          <Route
+            path="/terms"
+            element={
+              <TermsAndConditions
+                effectiveDate="August 22, 2025"
+                email="info@sriyantratech.com"
+                phone="+91-9876543210"
+                website="https://www.sriyantratech.com"
+                cityState="Hyderabad, Telangana"
+              />
+            }
+          />
         </Routes>
       </main>
       {shouldShowFooter && <Footer />}
@@ -108,4 +126,3 @@ function App() {
 }
 
 export default App;
-
