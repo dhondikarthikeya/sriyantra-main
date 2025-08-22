@@ -165,10 +165,10 @@ export default function AboutDetails() {
                 text: (
                   <>
                     Have questions? Reach out to us anytime at{" "}
-                    <a href="mailto:contact@sriyantratech.com" className="text-blue-600 underline decoration-indigo-400 decoration-2 underline-offset-4 hover:text-indigo-600 transition">
-                      contact@sriyantratech.com
+                    <a href="mailto:sriyantratech1@gmail.com" className="text-blue-600 underline decoration-indigo-400 decoration-2 underline-offset-4 hover:text-indigo-600 transition">
+                      sriyantratech1@gmail.com
                     </a>{" "}
-                    or call us at <strong>+1-234-567-890</strong>. We’d love to hear from you!
+                    or call us at <strong>+91 7013540986</strong>. We’d love to hear from you!
                   </>
                 ),
               },
