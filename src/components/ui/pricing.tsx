@@ -34,10 +34,11 @@ const plans: PricingPlan[] = [
     yearlyPrice: "4999",
     period: "One-Time",
     features: [
-      "1 Page Static Website",
+      "1-2 Pages Static Website",
       "Mobile-Responsive Design",
       "Free Hosting for 1 Year",
       "Delivery in 2-3 Days",
+      "Support for 1 Month",
       "Lifetime SSL Certificate",
       "Basic SEO Setup & more",
     ],
@@ -50,17 +51,18 @@ const plans: PricingPlan[] = [
   },
   {
     name: "🚀 Business Plan",
-    price: "19999",
+    price: "24999",
     yearlyPrice: "10499",
     period: "One-Time",
     features: [
-      "Up to 5 Pages (Home, About, Services, Contact, etc.)",
+      "Up to 7 Pages (Home, About, Services, Contact, etc.)",
       "Basic Custom UI/UX Design",
       "Social Media Integration",
       "SEO-Ready Pages (Basic)",
       "Support for 3 Month",
       "Analytics Integration (Google Analytics)",
       "Delivery in 5–7 Days",
+      "10-15 Social Media posts",
       "Google Business Profile Setup& more",
     ],
     description:
@@ -69,11 +71,11 @@ const plans: PricingPlan[] = [
     href: "/#contact",
     isPopular: true,
     isLaunchingOffer: true,
-    launchOfferPrice: "9999",
+    launchOfferPrice: "14999",
   },
   {
     name: "🔥 Pro Plan",
-    price: "34999",
+    price: "49999",
     yearlyPrice: "20999",
     period: "Starting At",
     features: [
@@ -91,7 +93,7 @@ const plans: PricingPlan[] = [
     buttonText: "Get Custom Quote",
     href: "/#contact",
     isLaunchingOffer: true,
-    launchOfferPrice: "19999",
+    launchOfferPrice: "29999",
   },
 ];
 
