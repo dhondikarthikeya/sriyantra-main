@@ -89,20 +89,20 @@ export default function About() {
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700">
             Small & Medium
           </span>{" "}
-          Businesses to Go Online
+           Enterprises to Go Online
         </motion.h1>
 
         <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-snug max-w-3xl mx-auto mt-2 px-4">
           At{" "}
           <span className="font-semibold text-blue-600">Sri Yantra Tech</span>, we
-          help businesses establish a professional online presence quickly and
+          help Enterprises establish a professional online presence quickly and
           affordably. Our goal is to make digital transformation accessible to
           everyone — from small startups to growing enterprises.
         </p>
 
         {/* Tags */}
         <div className="flex flex-wrap justify-center gap-2 mt-6">
-          {["Startups 🚀", "Retail Stores 🏪", "Freelancers 🧑‍💻", "Local Services 📍"].map(
+          {["Startups 🚀", " Enterprises 🏪", "Freelancers 🧑‍💻", "Local Services 📍"].map(
             (tag, i) => (
               <span
                 key={i}
