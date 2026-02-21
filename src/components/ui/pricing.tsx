@@ -51,7 +51,7 @@ const plans: PricingPlan[] = [
   },
   {
     name: "🚀 Business Plan",
-    price: "24999",
+    price: "39999",
     yearlyPrice: "10499",
     period: "One-Time",
     features: [
@@ -61,7 +61,7 @@ const plans: PricingPlan[] = [
       "SEO-Ready Pages (Basic)",
       "Support for 3 Month",
       "Analytics Integration (Google Analytics)",
-      "Delivery in 5–7 Days",
+      "Delivery in 7–10 Days",
       "10-15 Social Media posts",
       "Google Business Profile Setup& more",
     ],
@@ -71,12 +71,12 @@ const plans: PricingPlan[] = [
     href: "/#contact",
     isPopular: true,
     isLaunchingOffer: true,
-    launchOfferPrice: "14999",
+    launchOfferPrice: "18999",
   },
   {
     name: "🔥 Pro Plan",
-    price: "49999",
-    yearlyPrice: "20999",
+    price: "69999",
+    yearlyPrice: "29999",
     period: "Starting At",
     features: [
       "Unlimited Pages",
