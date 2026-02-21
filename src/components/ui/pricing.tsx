@@ -93,7 +93,7 @@ const plans: PricingPlan[] = [
     buttonText: "Get Custom Quote",
     href: "/#contact",
     isLaunchingOffer: true,
-    launchOfferPrice: "29999",
+    launchOfferPrice: "34999",
   },
 ];
 
